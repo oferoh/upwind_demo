@@ -1,0 +1,38 @@
+resources:
+  pipelines:
+    upwind_demo_bsg_pipeline:
+      name: upwind_demo_bsg_pipeline
+      libraries:
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/bronze/raw_items.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/bronze/raw_orders.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/bronze/raw_products.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/bronze/raw_suppliers.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/bronze/raw_customers.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/silver/stg_order_items.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/silver/stg_orders.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/silver/stg_products.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/silver/stg_suppliers.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/silver/stg_customers.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/gold/order_items.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/gold/orders.sql
+        - glob:
+            include: ../src/upwind_demo_bsg_pipeline/transformations/gold/customers.sql
+      catalog: ofer_demo
+      channel: CURRENT
+      continuous: false
+      photon: true
+      root_path: ../src/upwind_demo_bsg_pipeline
+      schema: default
+      serverless: true
